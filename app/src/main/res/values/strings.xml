@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SleeveBearings</string>
+    <string name="material">Bearing Material</string>
+    <string name="calculate">Calculate</string>
+    <string name="inside_dia">Inside Diameter (inch)</string>
+    <string name="spacer" >.   .</string>
+    <string-array name="aryMaterial">
+        <item>Delrin</item>
+        <item>Bronze</item>
+    </string-array>
+
+</resources>

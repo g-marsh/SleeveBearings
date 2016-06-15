@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     String strMaterial;
     double dblWearFactor;
     EditText etOD;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Instantiate Variables
         spnMaterial = (Spinner)findViewById(R.id.spinner);
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
+
 
         // Declare and populate array
         String [] aryMaterial = getResources().getStringArray(R.array.aryMaterial);
@@ -39,6 +43,20 @@ public class MainActivity extends AppCompatActivity {
                 if (strMaterial.equals("Delrin")) dblWearFactor = .00001;
                 else if (strMaterial.equals("Bronze")) dblWearFactor = .00002;
                 else /* error handling */ ;
+
+//                http://stackoverflow.com/questions/6438061/can-i-scroll-a-scrollview-programmatically-in-android
+//                http://stackoverflow.com/questions/8015313/how-to-programmatically-scroll-a-scrollview-to-bottom
+//
+                scrollView.post(new Runnable() {
+                    @Override
+
+                    public void run() {
+
+//                        scrollView.scrollTo(0, scrollView.getBottom());
+                        scrollView.fullScroll(View.FOCUS_DOWN);
+
+                    }
+                });
 
 
 

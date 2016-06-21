@@ -13,6 +13,7 @@
     <string name="wear_limit">Wear Limit (inch)</string>
     <!-- outputs -->
     <string name="wear_factor">Wear Factor (in^3*min/(lbf*ft*h))</string>
+    <string name="motion_coefficient">Motion Coefficient</string>
     <!-- coefficient arrays -->
     <string-array name="aryMaterial">
         <item>Delrin</item>
@@ -24,9 +25,13 @@
         <item>Reciprocating</item>
     </string-array>
     <string-array name="aryEnvironment">
-        <item>Rotary</item>
-        <item>Oscillatory</item>
-        <item>Reciprocating</item>
+        <item>Clean</item>
+        <item>Factory</item>
+    </string-array>
+    <string-array name="aryWear">
+        <item>0.004</item>
+        <item>0.008</item>
+        <item>0.016</item>
     </string-array>
 
 </resources>

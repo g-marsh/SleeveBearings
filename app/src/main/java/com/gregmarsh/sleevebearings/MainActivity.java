@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Variables
     Spinner spnMaterial;
+    Spinner spnMotion;
+    Spinner spnEnvironment;
     String strMaterial;
     double dblWearFactor;
     EditText etOD;
@@ -24,16 +26,22 @@ public class MainActivity extends AppCompatActivity {
 
         // Instantiate Variables
         spnMaterial = (Spinner)findViewById(R.id.spinner);
+        spnMotion = (Spinner)findViewById(R.id.spinner1);
+        spnEnvironment = (Spinner)findViewById(R.id.spinner2);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
-
-        // Declare and populate array
+        // Declare and populate arrays
         String [] aryMaterial = getResources().getStringArray(R.array.aryMaterial);
+        String [] aryMotion = getResources().getStringArray(R.array.aryMotion);
+        String [] aryEnvironment = getResources().getStringArray(R.array.aryEnvironment);
 
-        // Bind the array and apply settings to the Spinner.
+        // Bind the arrays and apply settings to the Spinners.
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, aryMaterial);
+        ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, aryMotion);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnMaterial.setAdapter(dataAdapter);
+        spnMotion.setAdapter(dataAdapter1);
 
         // Calculate and View Results
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {

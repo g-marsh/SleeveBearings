@@ -1,12 +1,32 @@
 <resources>
     <string name="app_name">SleeveBearings</string>
-    <string name="material">Bearing Material</string>
+    <!-- inputs -->
+    <string name="material2">Bearing Material</string>
+    <string name="motion">Mode of Motion</string>
+    <string name="environment">Environment</string>
     <string name="calculate">Calculate</string>
     <string name="inside_dia">Inside Diameter (inch)</string>
-    <string name="spacer" >.   .</string>
+    <string name="outside_dia">Outside Diameter (inch)</string>
+    <string name="bearing_length">Bearing Length (inch)</string>
+    <string name="load_speed">Load Speed (inch/s)</string>
+    <string name="load">Load (lbs)</string>
+    <string name="wear_limit">Wear Limit (inch)</string>
+    <!-- outputs -->
+    <string name="wear_factor">Wear Factor (in^3*min/(lbf*ft*h))</string>
+    <!-- coefficient arrays -->
     <string-array name="aryMaterial">
         <item>Delrin</item>
         <item>Bronze</item>
+    </string-array>
+    <string-array name="aryMotion">
+        <item>Rotary</item>
+        <item>Oscillatory</item>
+        <item>Reciprocating</item>
+    </string-array>
+    <string-array name="aryEnvironment">
+        <item>Rotary</item>
+        <item>Oscillatory</item>
+        <item>Reciprocating</item>
     </string-array>
 
 </resources>

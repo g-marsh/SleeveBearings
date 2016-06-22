@@ -17,8 +17,14 @@ public class MainActivity extends AppCompatActivity {
     Spinner spnEnvironment;
     Spinner spnWear;
     String strMaterial;
+    String strMotion;
+    String strEnvironment;
     TextView tvWearFactor;
+    TextView tvMotionCoefficient;
+    TextView tvEnviornmentCoefficient;
     double dblWearFactor;
+    double dblMotionCoefficient;
+    double dblEnvironmentCoefficient;
     EditText etOD;
     ScrollView scrollView;
 
@@ -34,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         spnWear = (Spinner)findViewById(R.id.spinner3);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         tvWearFactor = (TextView)findViewById(R.id.textView9);
+        tvMotionCoefficient = (TextView)findViewById(R.id.textView11);
+        tvEnviornmentCoefficient = (TextView)findViewById(R.id.textView13);
 
         // Declare and populate arrays
         String [] aryMaterial = getResources().getStringArray(R.array.aryMaterial);
@@ -60,11 +68,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 strMaterial = String.valueOf(spnMaterial.getSelectedItem());
-                if (strMaterial.equals("Delrin")) dblWearFactor = .00001;
-                else if (strMaterial.equals("Bronze")) dblWearFactor = .00002;
-                else /* error handling */ ;
-                tvWearFactor.setText(String.format("%.2e",Double.valueOf(spnWear.getSelectedItem().toString())));
-//                tvWearFactor.setText(String.format("%.2e",Double.valueOf("0.004")));
+                if (strMaterial.equals("Delrin")) dblWearFactor = 0.000000006;
+                else if (strMaterial.equals("Bronze")) dblWearFactor = 0.00000000006;
+                else /* error handling */ dblWearFactor = 0;
+//                tvWearFactor.setText(String.format("%.2e",Double.valueOf(spnWear.getSelectedItem().toString())));
+                tvWearFactor.setText(String.format("%.2e",dblWearFactor));
+
+                strMotion = String.valueOf(spnMotion.getSelectedItem());
+                if (strMotion.equals("Rotary")) dblMotionCoefficient = 1.3;
+                else if (strMotion.equals("Linear")) dblMotionCoefficient = 1.5;
+                else dblMotionCoefficient = 2.0;
+                tvMotionCoefficient.setText(String.format("%.1f",dblMotionCoefficient));
+
+                strEnvironment = String.valueOf(spnEnvironment.getSelectedItem());
+                if (strEnvironment.equals("Clean")) dblEnvironmentCoefficient = 1;
+                else dblEnvironmentCoefficient = 3;
+                tvEnviornmentCoefficient.setText(String.valueOf(dblEnvironmentCoefficient));
 
 //                http://stackoverflow.com/questions/6438061/can-i-scroll-a-scrollview-programmatically-in-android
 //                http://stackoverflow.com/questions/8015313/how-to-programmatically-scroll-a-scrollview-to-bottom

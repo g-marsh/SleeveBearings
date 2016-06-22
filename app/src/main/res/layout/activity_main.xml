@@ -10,10 +10,10 @@
     tools:context="com.gregmarsh.sleevebearings.MainActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/favorite"
+        android:src="@drawable/sleevebrg"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -31,7 +31,7 @@
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="29dp">
+        android:layout_marginTop="5dp">
 
         <!--  Edit Text Inputs  -->
 
@@ -271,6 +271,26 @@
         </TableRow>
 
         <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/textView11"
+            android:layout_column="0"
+            android:layout_gravity="right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/motion_coefficient"
+            android:id="@+id/textView12"
+            android:layout_column="2" />
+    </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -278,15 +298,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:id="@+id/textView11"
+                android:id="@+id/textView13"
                 android:layout_column="0"
                 android:layout_gravity="right" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/motion_coefficient"
-                android:id="@+id/textView12"
+                android:text="@string/environment_coefficient"
+                android:id="@+id/textView14"
                 android:layout_column="2" />
         </TableRow>
 

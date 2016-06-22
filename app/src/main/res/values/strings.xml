@@ -14,6 +14,7 @@
     <!-- outputs -->
     <string name="wear_factor">Wear Factor (in^3*min/(lbf*ft*h))</string>
     <string name="motion_coefficient">Motion Coefficient</string>
+    <string name="environment_coefficient">Environment Coefficient</string>
     <!-- coefficient arrays -->
     <string-array name="aryMaterial">
         <item>Delrin</item>
@@ -21,8 +22,8 @@
     </string-array>
     <string-array name="aryMotion">
         <item>Rotary</item>
+        <item>Linear</item>
         <item>Oscillatory</item>
-        <item>Reciprocating</item>
     </string-array>
     <string-array name="aryEnvironment">
         <item>Clean</item>

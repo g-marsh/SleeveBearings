@@ -6,7 +6,7 @@
     <string name="environment">Environment</string>
     <string name="calculate">Calculate</string>
     <string name="inside_dia">Inside Diameter (inch)</string>
-    <string name="outside_dia">Outside Diameter (inch)</string>
+    <string name="rolling_dia">Rolling Diameter (inch)</string>
     <string name="bearing_length">Bearing Length (inch)</string>
     <string name="load_speed">Load Speed (inch/s)</string>
     <string name="load">Load (lbs)</string>
@@ -15,6 +15,13 @@
     <string name="wear_factor">Wear Factor (in^3*min/(lbf*ft*h))</string>
     <string name="motion_coefficient">Motion Coefficient</string>
     <string name="environment_coefficient">Environment Coefficient</string>
+    <!-- calculated -->
+    <string name="load_speed_fpm">Load Speed (ft/min)</string>
+    <string name="brg_rpm">Bearing RPM</string>
+    <string name="brg_vel">Bearing Velocity (ft/min)</string>
+    <string name="brg_pres">Bearing Pressure (psi)</string>
+    <string name="brg_pv">Bearing PV (psi*ft/min)</string>
+    <string name="life_hrs">Bearing life (hrs)</string>
     <!-- coefficient arrays -->
     <string-array name="aryMaterial">
         <item>Delrin</item>

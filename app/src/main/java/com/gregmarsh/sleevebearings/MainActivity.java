@@ -11,21 +11,31 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Variables
+    // Spinners
     Spinner spnMaterial;
     Spinner spnMotion;
     Spinner spnEnvironment;
     Spinner spnWear;
+    // String
     String strMaterial;
     String strMotion;
     String strEnvironment;
+    // Text Views
     TextView tvWearFactor;
     TextView tvMotionCoefficient;
     TextView tvEnviornmentCoefficient;
+    TextView tvLoadSpeedFPM;
+    TextView tvBrgRPM;
+    TextView tvBrgVelocity;
+    TextView tvBrgPressure;
+    TextView tvBrgPV;
+    TextView tvBrgLifeHrs;
+    // EditTexts
+    EditText etID;
+    // Variables
     double dblWearFactor;
     double dblMotionCoefficient;
     double dblEnvironmentCoefficient;
-    EditText etOD;
     ScrollView scrollView;
 
     @Override
@@ -34,14 +44,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instantiate Variables
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
+        // Spinners
         spnMaterial = (Spinner)findViewById(R.id.spinner);
         spnMotion = (Spinner)findViewById(R.id.spinner1);
         spnEnvironment = (Spinner)findViewById(R.id.spinner2);
         spnWear = (Spinner)findViewById(R.id.spinner3);
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
+        // Edit Text
+        etID = (EditText)findViewById(R.id.editText);
+        // Text Views
         tvWearFactor = (TextView)findViewById(R.id.textView9);
         tvMotionCoefficient = (TextView)findViewById(R.id.textView11);
         tvEnviornmentCoefficient = (TextView)findViewById(R.id.textView13);
+        tvLoadSpeedFPM = (TextView)findViewById(R.id.textView15);
+        tvBrgRPM = (TextView)findViewById(R.id.textView17);
+        tvBrgVelocity = (TextView)findViewById(R.id.textView19);
+        tvBrgPressure = (TextView)findViewById(R.id.textView21);
+        tvBrgPV = (TextView)findViewById(R.id.textView23);
+        tvBrgLifeHrs = (TextView)findViewById(R.id.textView25);
 
         // Declare and populate arrays
         String [] aryMaterial = getResources().getStringArray(R.array.aryMaterial);
@@ -84,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 if (strEnvironment.equals("Clean")) dblEnvironmentCoefficient = 1;
                 else dblEnvironmentCoefficient = 3;
                 tvEnviornmentCoefficient.setText(String.valueOf(dblEnvironmentCoefficient));
+
 
 //                http://stackoverflow.com/questions/6438061/can-i-scroll-a-scrollview-programmatically-in-android
 //                http://stackoverflow.com/questions/8015313/how-to-programmatically-scroll-a-scrollview-to-bottom

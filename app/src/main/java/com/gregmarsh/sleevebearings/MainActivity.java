@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import static java.lang.Math.PI;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvEnviornmentCoefficient;
     TextView tvLoadSpeedFPM;
     TextView tvBrgRPM;
-    TextView tvBrgVelocity;
+    TextView tvBrgVel;
     TextView tvBrgPressure;
     TextView tvBrgPV;
     TextView tvBrgLifeHrs;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         tvEnviornmentCoefficient = (TextView)findViewById(R.id.textView13);
         tvLoadSpeedFPM = (TextView)findViewById(R.id.textView15);
         tvBrgRPM = (TextView)findViewById(R.id.textView17);
-        tvBrgVelocity = (TextView)findViewById(R.id.textView19);
+        tvBrgVel = (TextView)findViewById(R.id.textView19);
         tvBrgPressure = (TextView)findViewById(R.id.textView21);
         tvBrgPV = (TextView)findViewById(R.id.textView23);
         tvBrgLifeHrs = (TextView)findViewById(R.id.textView25);
@@ -145,7 +146,10 @@ public class MainActivity extends AppCompatActivity {
 //                double dblBrgLife;
                 dblLoadSpeedFPM = Double.valueOf(etLoadSpeedIPS.getText().toString())*60/12;
                 tvLoadSpeedFPM.setText(String.valueOf(dblLoadSpeedFPM));
-//                dblBrgRPM = dblLoadSpeedFPM * 12 / (Math.PI)
+                dblBrgRPM = dblLoadSpeedFPM * 12 /(PI*Double.valueOf(etRollDia.getText().toString()));
+                tvBrgRPM.setText(String.format("%.2f",dblBrgRPM));
+                dblBrgVel = dblLoadSpeedFPM *Double.valueOf(etID.getText().toString())/Double.valueOf(etRollDia.getText().toString());
+                tvBrgVel.setText(String.format("%.2f",dblBrgVel));
 
                 scrollView.post(new Runnable() {
                     @Override

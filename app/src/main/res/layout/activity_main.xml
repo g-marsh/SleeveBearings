@@ -48,7 +48,8 @@
                 android:id="@+id/editText"
                 android:width="75dp"
                 android:layout_column="0"
-                android:gravity="end" />
+                android:gravity="end"
+                android:text=".399" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -70,7 +71,8 @@
                 android:id="@+id/editText1"
                 android:width="75dp"
                 android:layout_column="0"
-                android:gravity="end" />
+                android:gravity="end"
+                android:text=".747" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,7 +94,8 @@
                 android:id="@+id/editText2"
                 android:width="75dp"
                 android:layout_column="0"
-                android:gravity="end" />
+                android:gravity="end"
+                android:text=".625" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -114,7 +117,8 @@
                 android:id="@+id/editText3"
                 android:width="75dp"
                 android:layout_column="0"
-                android:gravity="end" />
+                android:gravity="end"
+                android:text="3.79" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,7 +140,8 @@
                 android:id="@+id/editText4"
                 android:width="75dp"
                 android:layout_column="0"
-                android:gravity="end" />
+                android:gravity="end"
+                android:text="193" />
 
             <TextView
                 android:layout_width="wrap_content"

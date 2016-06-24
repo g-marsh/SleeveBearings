@@ -29,7 +29,7 @@
     </string-array>
     <string-array name="aryMotion">
         <item>Rotary</item>
-        <item>Linear</item>
+        <!--<item>Linear</item>-->
         <item>Oscillatory</item>
     </string-array>
     <string-array name="aryEnvironment">

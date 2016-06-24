@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         spnMotion.setAdapter(dataAdapter1);
         spnEnvironment.setAdapter(dataAdapter2);
         spnWear.setAdapter(dataAdapter3);
+        //
 
         // Calculate and View Results
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {

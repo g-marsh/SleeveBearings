@@ -32,10 +32,24 @@ public class MainActivity extends AppCompatActivity {
     TextView tvBrgLifeHrs;
     // EditTexts
     EditText etID;
+    EditText etRollDia;
+    EditText etBrgLength;
+    EditText etLoadSpeedIPS;
+    EditText etLoad;
     // Variables
     double dblWearFactor;
     double dblMotionCoefficient;
     double dblEnvironmentCoefficient;
+    double dblInsideDia;
+    double dblRollingDia;
+    double dblBrgLength;
+    double dblLoadSpeedFPM;
+    double dblWearLimit;
+    double dblBrgRPM;
+    double dblBrgVel;
+    double dblBrgPress;
+    double dblBrgPV;
+    double dblBrgLife;
     ScrollView scrollView;
 
     @Override
@@ -52,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
         spnWear = (Spinner)findViewById(R.id.spinner3);
         // Edit Text
         etID = (EditText)findViewById(R.id.editText);
+        etRollDia = (EditText)findViewById(R.id.editText1);
+        etBrgLength = (EditText)findViewById(R.id.editText2);
+        etLoadSpeedIPS = (EditText)findViewById(R.id.editText3);
+        etLoad = (EditText)findViewById(R.id.editText4);
         // Text Views
         tvWearFactor = (TextView)findViewById(R.id.textView9);
         tvMotionCoefficient = (TextView)findViewById(R.id.textView11);
@@ -96,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
                 strMotion = String.valueOf(spnMotion.getSelectedItem());
                 if (strMotion.equals("Rotary")) dblMotionCoefficient = 1.3;
-                else if (strMotion.equals("Linear")) dblMotionCoefficient = 1.5;
+//                else if (strMotion.equals("Linear")) dblMotionCoefficient = 1.5;
                 else dblMotionCoefficient = 2.0;
                 tvMotionCoefficient.setText(String.format("%.1f",dblMotionCoefficient));
 
@@ -104,11 +122,31 @@ public class MainActivity extends AppCompatActivity {
                 if (strEnvironment.equals("Clean")) dblEnvironmentCoefficient = 1;
                 else dblEnvironmentCoefficient = 3;
                 tvEnviornmentCoefficient.setText(String.valueOf(dblEnvironmentCoefficient));
-
-
 //                http://stackoverflow.com/questions/6438061/can-i-scroll-a-scrollview-programmatically-in-android
 //                http://stackoverflow.com/questions/8015313/how-to-programmatically-scroll-a-scrollview-to-bottom
-//
+
+//                EditText etRollDia;
+//                EditText etBrgLength;
+//                EditText etLoadSpeedIPS;
+//                EditText etLoad;
+//                EditText etWearLimit;
+//                double dblWearFactor;
+//                double dblMotionCoefficient;
+//                double dblEnvironmentCoefficient; //above done
+//                double dblInsideDia;
+//                double dblRollingDia;
+//                double dblBrgLength;
+//                double dblLoadSpeedFPM; x
+//                double dblWearLimit;
+//                double dblBrgRPM;
+//                double dblBrgVel;
+//                double dblBrgPress;
+//                double dblBrgPV;
+//                double dblBrgLife;
+                dblLoadSpeedFPM = Double.valueOf(etLoadSpeedIPS.getText().toString())*60/12;
+                tvLoadSpeedFPM.setText(String.valueOf(dblLoadSpeedFPM));
+//                dblBrgRPM = dblLoadSpeedFPM * 12 / (Math.PI)
+
                 scrollView.post(new Runnable() {
                     @Override
 

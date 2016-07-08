@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     TextView tvBrgVel;
     TextView tvBrgPressure;
     TextView tvBrgPV;
+    TextView tvLblBrgVel;
+    TextView tvLblBrgPressure;
+    TextView tvLblBrgPV;
     TextView tvBrgLifeHrs;
     // EditTexts
     EditText etID;
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
     double dblBrgPress;
     double dblBrgPV;
     double dblBrgLife;
+    double dblMaxP;
+    double dblMaxV;
+    double dblMaxPV;
     ScrollView scrollView;
 
     @Override
@@ -78,8 +84,11 @@ public class MainActivity extends AppCompatActivity {
         tvLoadSpeedFPM = (TextView)findViewById(R.id.textView15);
         tvBrgRPM = (TextView)findViewById(R.id.textView17);
         tvBrgVel = (TextView)findViewById(R.id.textView19);
+        tvLblBrgVel = (TextView)findViewById(R.id.textView20);
         tvBrgPressure = (TextView)findViewById(R.id.textView21);
+        tvLblBrgPressure = (TextView)findViewById(R.id.textView22);
         tvBrgPV = (TextView)findViewById(R.id.textView23);
+        tvLblBrgPV = (TextView)findViewById(R.id.textView24);
         tvBrgLifeHrs = (TextView)findViewById(R.id.textView25);
 
         // Declare and populate arrays
@@ -108,8 +117,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 strMaterial = String.valueOf(spnMaterial.getSelectedItem());
-                if (strMaterial.equals("Delrin")) dblWearFactor = 0.000000006;
-                else if (strMaterial.equals("Bronze")) dblWearFactor = 0.00000000006;
+                if (strMaterial.equals("Delrin")) {
+                    dblWearFactor = 0.000000006;
+                    dblMaxP = 1000.0;
+                    dblMaxV = 1000.0;
+                    dblMaxPV = 3000.0;
+                    tvLblBrgVel.setText(R.string.brg_vel_delrin);
+                }
+                else if (strMaterial.equals("Bronze")) {
+                    dblWearFactor = 0.00000000006;
+                    dblMaxP = 2000.0;
+                    dblMaxV = 1200.0;
+                    dblMaxPV = 50000.0;
+                }
                 else /* error handling */ dblWearFactor = 0;
 //                tvWearFactor.setText(String.format("%.2e",Double.valueOf(spnWear.getSelectedItem().toString())));
                 tvWearFactor.setText(String.format("%.2e",dblWearFactor));
@@ -151,6 +171,13 @@ public class MainActivity extends AppCompatActivity {
                 tvBrgRPM.setText(String.format("%.2f",dblBrgRPM));
                 dblBrgVel = dblLoadSpeedFPM *Double.valueOf(etID.getText().toString())/Double.valueOf(etRollDia.getText().toString());
                 tvBrgVel.setText(String.format("%.2f",dblBrgVel));
+                dblBrgPress = Double.valueOf(etLoad.getText().toString())/(Double.valueOf(etBrgLength.getText().toString())*Double.valueOf(etID.getText().toString()));
+                tvBrgPressure.setText(String.format("%.1f",dblBrgPress));
+                dblBrgPV = dblBrgVel * dblBrgPress;
+                tvBrgPV.setText(String.format("%.0f",dblBrgPV));
+                dblBrgLife = 3*Double.valueOf(etBrgLength.getText().toString())*Double.valueOf(spnWear.getSelectedItem().toString())/
+                        (dblMotionCoefficient*dblEnvironmentCoefficient*dblWearFactor*Double.valueOf(etLoad.getText().toString())*dblBrgRPM);
+                tvBrgLifeHrs.setText(String.format("%.1f",dblBrgLife));
 
                 scrollView.post(new Runnable() {
                     @Override

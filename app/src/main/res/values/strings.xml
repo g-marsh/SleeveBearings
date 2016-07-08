@@ -21,6 +21,12 @@
     <string name="brg_vel">Bearing Velocity (ft/min)</string>
     <string name="brg_pres">Bearing Pressure (psi)</string>
     <string name="brg_pv">Bearing PV (psi*ft/min)</string>
+    <string name="brg_vel_delrin">Bearing Velocity (ft/min) Max 1,000</string>
+    <string name="brg_pres_delrin">Bearing Pressure (psi) Max 1,000</string>
+    <string name="brg_pv_delrin">Bearing PV (psi*ft/min)Max 3,000</string>
+    <string name="brg_vel_bronze">Bearing Velocity (ft/min) Max 1,200</string>
+    <string name="brg_pres_bronze">Bearing Pressure (psi) Max 2,000</string>
+    <string name="brg_pv_bronze">Bearing PV (psi*ft/min)Max 50,000</string>
     <string name="life_hrs">Bearing life (hrs)</string>
     <!-- coefficient arrays -->
     <string-array name="aryMaterial">

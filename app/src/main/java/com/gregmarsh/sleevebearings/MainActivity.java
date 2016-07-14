@@ -110,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         spnMotion.setAdapter(dataAdapter1);
         spnEnvironment.setAdapter(dataAdapter2);
         spnWear.setAdapter(dataAdapter3);
-        //
 
         // Calculate and View Results
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
@@ -123,12 +122,17 @@ public class MainActivity extends AppCompatActivity {
                     dblMaxV = 1000.0;
                     dblMaxPV = 3000.0;
                     tvLblBrgVel.setText(R.string.brg_vel_delrin);
+                    tvLblBrgPressure.setText(R.string.brg_pres_delrin);
+                    tvLblBrgPV.setText(R.string.brg_pv_delrin);
                 }
                 else if (strMaterial.equals("Bronze")) {
                     dblWearFactor = 0.00000000006;
                     dblMaxP = 2000.0;
                     dblMaxV = 1200.0;
                     dblMaxPV = 50000.0;
+                    tvLblBrgVel.setText(R.string.brg_vel_bronze);
+                    tvLblBrgPressure.setText(R.string.brg_pres_bronze);
+                    tvLblBrgPV.setText(R.string.brg_pv_bronze);
                 }
                 else /* error handling */ dblWearFactor = 0;
 //                tvWearFactor.setText(String.format("%.2e",Double.valueOf(spnWear.getSelectedItem().toString())));
@@ -144,29 +148,9 @@ public class MainActivity extends AppCompatActivity {
                 if (strEnvironment.equals("Clean")) dblEnvironmentCoefficient = 1;
                 else dblEnvironmentCoefficient = 3;
                 tvEnviornmentCoefficient.setText(String.valueOf(dblEnvironmentCoefficient));
-//                http://stackoverflow.com/questions/6438061/can-i-scroll-a-scrollview-programmatically-in-android
-//                http://stackoverflow.com/questions/8015313/how-to-programmatically-scroll-a-scrollview-to-bottom
 
-//                EditText etRollDia;
-//                EditText etBrgLength;
-//                EditText etLoadSpeedIPS;
-//                EditText etLoad;
-//                EditText etWearLimit;
-//                double dblWearFactor;
-//                double dblMotionCoefficient;
-//                double dblEnvironmentCoefficient; //above done
-//                double dblInsideDia;
-//                double dblRollingDia;
-//                double dblBrgLength;
-//                double dblLoadSpeedFPM; x
-//                double dblWearLimit;
-//                double dblBrgRPM;
-//                double dblBrgVel;
-//                double dblBrgPress;
-//                double dblBrgPV;
-//                double dblBrgLife;
                 dblLoadSpeedFPM = Double.valueOf(etLoadSpeedIPS.getText().toString())*60/12;
-                tvLoadSpeedFPM.setText(String.valueOf(dblLoadSpeedFPM));
+                tvLoadSpeedFPM.setText(String.format("%.2f",dblLoadSpeedFPM));
                 dblBrgRPM = dblLoadSpeedFPM * 12 /(PI*Double.valueOf(etRollDia.getText().toString()));
                 tvBrgRPM.setText(String.format("%.2f",dblBrgRPM));
                 dblBrgVel = dblLoadSpeedFPM *Double.valueOf(etID.getText().toString())/Double.valueOf(etRollDia.getText().toString());
@@ -175,9 +159,23 @@ public class MainActivity extends AppCompatActivity {
                 tvBrgPressure.setText(String.format("%.1f",dblBrgPress));
                 dblBrgPV = dblBrgVel * dblBrgPress;
                 tvBrgPV.setText(String.format("%.0f",dblBrgPV));
-                dblBrgLife = 3*Double.valueOf(etBrgLength.getText().toString())*Double.valueOf(spnWear.getSelectedItem().toString())/
-                        (dblMotionCoefficient*dblEnvironmentCoefficient*dblWearFactor*Double.valueOf(etLoad.getText().toString())*dblBrgRPM);
-                tvBrgLifeHrs.setText(String.format("%.1f",dblBrgLife));
+                if (dblBrgPress <= dblMaxP && dblBrgVel <= dblMaxV && dblBrgPV <= dblMaxPV) {
+                    dblBrgLife = 3 * Double.valueOf(etBrgLength.getText().toString()) * Double.valueOf(spnWear.getSelectedItem().toString()) /
+                            (dblMotionCoefficient * dblEnvironmentCoefficient * dblWearFactor * Double.valueOf(etLoad.getText().toString()) * dblBrgRPM);
+                    tvBrgLifeHrs.setText(String.format("%.1f", dblBrgLife));
+                    tvBrgVel.setTextColor(getResources().getColor(R.color.colorText));
+                    tvBrgPressure.setTextColor(getResources().getColor(R.color.colorText));
+                    tvBrgPV.setTextColor(getResources().getColor(R.color.colorText));
+                    tvBrgLifeHrs.setTextColor(getResources().getColor(R.color.colorText));
+                }
+                else
+                {
+                    tvBrgLifeHrs.setText(R.string.fail);
+                    if (dblBrgVel > dblMaxV) tvBrgVel.setTextColor(getResources().getColor(R.color.colorError));
+                    if (dblBrgPress > dblMaxP) tvBrgPressure.setTextColor(getResources().getColor(R.color.colorError));
+                    if (dblBrgPV > dblMaxPV) tvBrgPV.setTextColor(getResources().getColor(R.color.colorError));
+                    tvBrgLifeHrs.setTextColor(getResources().getColor(R.color.colorError));
+                }
 
                 scrollView.post(new Runnable() {
                     @Override
@@ -190,11 +188,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
-
             }
         });
-
 
     }
 }
